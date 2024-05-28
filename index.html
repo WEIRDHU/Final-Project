@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Complete Responsive Personal Portfolio Website Design</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+
+   <!-- aos css link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+   <!-- custom css file link  -->
+   <style>@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
+
+    :root{
+       --yellow:#ffcc0d;
+       --black:#000;
+       --white:#fff;
+       --light-bg:#eee;
+       --border-bold:.5rem solid var(--black);
+       --border-light:.2rem solid var(--black);
+    }
+    
+    *{
+       font-family: 'Rubik', sans-serif;
+       margin:0; padding:0;
+       box-sizing: border-box;
+       outline: none; border:none;
+       text-decoration: none;
+       text-transform: capitalize;
+       color:var(--black);
+    }
+    
+    *::selection{
+       background-color: var(--black);
+       color:var(--yellow);
+    }
+    
+    *::-webkit-scrollbar{
+       height: .5rem;
+       width: 1rem;
+    }
+    
+    *::-webkit-scrollbar-track{
+       background-color: transparent;
+    }
+    
+    *::-webkit-scrollbar-thumb{
+       background-color: var(--yellow);
+    }
+    
+    html{
+       font-size: 62.5%;
+       overflow-x: hidden;
+       scroll-behavior: smooth;
+    }
+    
+    body{
+       overflow: hidden;
+       transition: .2s linear !important;
+    }
+    
+    body.active{
+       padding-left: 35rem;
+    }
+    
+    section{
+       padding:3rem 2rem;
+       margin: 0 auto;
+       max-width: 1200px;
+       text-align: center;
+    }
+    
+    .table-container {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+    }
+    
+    table {
+       border-collapse: collapse;
+       margin: 25px 0;
+       font-size: 1em;
+       min-width: 400px;
+       box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    table thead tr {
+       background-color: var(--yellow);
+       color: var(--black);
+       text-align: left;
+       font-weight: bold;
+    }
+    
+    table th, table td {
+       padding: 12px 15px;
+    }
+    
+    table tbody tr {
+       border-bottom: 1px solid var(--black);
+    }
+    
+    table tbody tr:nth-of-type(even) {
+       background-color: #f3f3f3;
+    }
+    
+    table tbody tr:last-of-type {
+       border-bottom: 2px solid var(--black);
+    }
+    
+    table tbody tr.active-row {
+       font-weight: bold;
+       color: var(--yellow);
+    }
+    
+    .heading{
+       margin-bottom: 3rem;
+       text-align: center;
+    }
+    
+    .heading span{
+       text-transform: uppercase;
+       font-size: 6.5rem;
+       border-bottom: var(--border-bold);
+    }
+    
+    .message{
+       position: sticky;
+       top:2rem;
+       max-width: 1200px;
+       margin:0 auto;
+       background-color: var(--yellow);
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+       padding:2rem;
+       font-size: 2rem;
+    }
+    
+    .message i{
+       cursor: pointer;
+    }
+    
+    .btn{
+       display: inline-block;
+       margin-top: 1rem;
+       cursor: pointer;
+       padding:1rem 3rem;
+       border:var(--border-light);
+       font-size: 2rem;
+       background: none;
+    }
+    
+    .btn:hover{
+       background-color: var(--black);
+       color:var(--white);
+    }
+    
+    .header{
+       position: fixed;
+       top:0; left:-35rem;
+       height: 100vh;
+       background-color: var(--white);
+       border-right: var(--border-bold);
+       width: 35rem;
+       padding:3rem 2rem;
+       text-align: center; 
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+       flex-flow: column;
+       transition: .2s linear !important;
+       text-align: center;
+       z-index: 1000;
+    }
+    
+    .header .logo{
+       text-transform: uppercase;
+       border-bottom: var(--border-bold);
+       font-weight: bolder;
+       font-size: 4.5rem;
+    }
+    
+    .header .navbar{
+       width: 100%;
+    }
+    
+    .header .navbar a{
+       display: block;
+       font-size: 2.5rem;
+       padding:1.5rem;
+       margin:.5rem;
+    }
+    
+    .header .navbar a.active,
+    .header .navbar a:hover{
+       background-color: var(--yellow);
+    }
+    
+    .header .follow a{
+       font-size: 3rem;
+       margin:0 1rem;
+       cursor: pointer;
+       transition: .6s linear !important;
+    }
+    
+    .header .follow a:hover{
+       transform: rotate(360deg);
+    }
+    
+    #menu-btn{
+       position: absolute;
+       top:0; right:-5.5rem;
+       height: 4.5rem;
+       line-height: 4.5rem;
+       width: 5rem;
+       font-size: 2.5rem;
+       cursor: pointer;
+       background-color: var(--black);
+       color:var(--white);
+    }
+    
+    .header.active{
+       left: 0;
+    }
+    
+    .home{
+       display: flex;
+       align-items: center;
+       flex-wrap: wrap;
+       gap:2rem;
+       min-height: 100vh;
+    }
+    
+    .home .image{
+       flex:1 1 40rem;
+    }
+    
+    .home .image img{
+       height: 65rem;
+       padding:2rem;
+       border:var(--border-bold);
+    }
+    
+    .home .content{
+       flex:1 1 40rem;
+    }
+    
+    .home .content h3{
+       text-transform: uppercase;
+       font-size: 5rem;
+       margin-bottom: .5rem;
+    }
+    
+    .home .content span{
+       display: inline-block;
+       padding:1rem 2rem;
+       background-color: var(--yellow);
+       font-size: 2.5rem;
+       margin:1rem 0;
+    }
+    
+    .home .content p{
+       font-size: 1.7rem;
+       line-height: 2;
+       padding:1rem 0;
+    }
+    
+    .about .biography p{
+       margin:2rem auto;
+       max-width: 70rem;
+       line-height: 2;
+       font-size: 1.8rem;
+    }
+    
+    .about .biography .bio{
+       margin: 1rem 0;
+    }
+    
+    .about .biography .bio h3{
+       padding:1rem 2rem;
+       display: inline-block;
+       margin:1rem;
+       background-color: var(--light-bg);
+       border:var(--border-light);
+       word-break: break-all;
+       font-size: 2.5rem;
+       font-weight: normal;
+       text-transform: none;
+    }
+    
+    .about .biography .bio h3 span{
+       font-weight: lighter;
+    }
+    
+    .about .skills{
+       margin:3rem 0;
+    }
+    
+    .about .skills .progress{
+       margin-top: 1rem;
+    }
+    
+    .about .skills .progress .bar{
+       margin:1rem auto;
+       max-width: 70rem;
+       border:var(--border-bold);
+       padding:1rem;
+    }
+    
+    .about .skills .progress .bar h3{
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+       font-size: 2rem;
+       padding:1rem 2rem;
+       background-color: var(--yellow);
+    }
+    
+    .about .skills .progress .bar span{
+       font-weight: normal;
+    }
+    
+    .about .skills .progress .bar:nth-child(1) h3{
+       width: 95%;
+    }
+    
+    .about .skills .progress .bar:nth-child(2) h3{
+       width: 80%;
+    }
+    
+    .about .skills .progress .bar:nth-child(3) h3{
+       width: 65%;
+    }
+    
+    .about .skills .progress .bar:nth-child(4) h3{
+       width: 80%;
+    }
+    
+    .about .edu-exp .row{
+       display: flex;
+       flex-wrap: wrap;
+       gap:1.5rem;
+    }
+    
+    .about .edu-exp .row .box-container{
+       flex:1 1 40rem;
+    }
+    
+    .about .edu-exp .row .box-container .title{
+       padding:1.5rem;
+       font-size: 3rem;
+       background-color: var(--yellow);
+    }
+    
+    .about .edu-exp .row .box-container .box{
+       text-align: left;
+       margin:1.5rem 0;
+       background-color: var(--light-bg);
+       padding:2rem;
+    }
+    
+    .about .edu-exp .row .box-container .box span{
+       font-size: 1.5rem;
+    }
+    
+    .about .edu-exp .row .box-container .box h3{
+       font-size: 2.5rem;
+       font-weight: normal;
+       margin-top: 1.5rem;
+       margin-bottom: 1rem;
+    }
+    
+    .about .edu-exp .row .box-container .box p{
+       line-height: 1.5;
+       font-size: 1.7rem;
+       line-height: 2;
+    }
+    
+    .services .box-container{
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+       gap:1.5rem;
+       align-items: flex-start;
+    }
+    
+    .services .box-container .box{
+       padding:3rem 2rem;
+       border:var(--border-light);
+    
+    }
+    
+    .services .box-container .box i{
+       font-size: 4rem;
+       margin-bottom: 2rem;
+    }
+    
+    .services .box-container .box h3{
+       margin:1rem 0;
+       font-size: 2rem;
+       padding:1.5rem;
+       background-color: var(--yellow);
+       font-weight: normal;
+    }
+    
+    .services .box-container .box p{
+       line-height: 2;
+       font-size: 1.7rem;
+    }
+    
+    .services .box-container .box:hover{
+       background-color: var(--black);
+    }
+    
+    .services .box-container .box:hover i{
+       color:var(--white);
+    }
+    
+    .services .box-container .box:hover p{
+       color:var(--white);
+    }
+    
+    .portfolio .box-container{
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+       gap:1.5rem;
+       align-items: flex-start;
+    }
+    
+    .portfolio .box-container .box img{
+       height: 30rem;
+       width: 100%;
+       object-fit: cover;
+    }
+    
+    .portfolio .box-container .box h3{
+       margin:1rem 0;
+       font-size: 2rem;
+       font-weight: normal;
+    }
+    
+    .portfolio .box-container .box span{
+       font-size: 1.7rem;
+    }
+    
+    .contact form{
+       max-width: 70rem;
+       margin:0 auto;
+    }
+    
+    .contact form .box{
+       width: 100%;
+       padding:1.4rem;
+       font-size: 2rem;
+       text-transform: none;
+       border:var(--border-light);
+       margin:1rem 0;
+    }
+    
+    .contact form textarea{
+       height: 20rem;
+       resize: none;
+    }
+    
+    .contact form .flex{
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: space-between;
+    }
+    
+    .contact form .flex .box{
+       width: 49%;
+    }
+    
+    .contact .box-container{
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+       gap:1.5rem;
+       align-items: flex-start;
+       margin-top: 3rem;
+    }
+    
+    .contact .box-container .box{
+       padding:3rem 2rem;
+       border:var(--border-light);
+    }
+    
+    .contact .box-container .box i{
+       font-size: 3rem;
+       height: 7rem;
+       width: 7rem;
+       line-height: 7rem;
+       color:var(--white);
+       background-color: var(--black);
+       margin-bottom: .5rem;
+    }
+    
+    .contact .box-container .box h3{
+       margin:1.5rem 0;
+       font-size: 2.5rem;
+    }
+    
+    .contact .box-container .box p{
+       font-size: 2rem;
+       text-transform: none;
+    }
+    
+    .credit{
+       text-align: center;
+       background-color: var(--black);
+       padding:3rem;
+       font-size: 2rem;
+       color:var(--white);
+    }
+    
+    .credit span{
+       color:var(--yellow);
+    }
+    
+    
+    
+    
+    
+    
+    /* media queries  */
+    
+    @media (max-width:991px){
+    
+       html{
+          font-size: 55%;
+       }
+    
+       body.active{
+          padding-left: 0;
+       }
+    
+    }
+    
+    @media (max-width:450px){
+    
+       html{
+          font-size: 50%;
+       }
+    
+       .header.active{
+          padding-top: 7rem;
+       }
+    
+       #menu-btn.fa-times{
+          right:0;
+       }
+    
+       .home .image img{
+          height: auto;
+          width: 100%;
+       }
+    
+       .heading span{
+          font-size: 4rem;
+       }
+    
+       .about .biography .bio h3{
+          font-size: 2rem;
+       }
+    
+       .contact form .flex .box{
+          width: 100%;
+       }
+    
+    }</style>
+
+</head>
+<body>
+<header class="header">
+
+    <div id="menu-btn" class="fas fa-bars"></div>
+ 
+    <a href="#home" class="logo">Portfolio</a>
+ 
+    <nav class="navbar">
+       <a href="#home" class="active">home</a>
+       <a href="#about">about</a>
+       <a href="#services">Job Seeking Documents</a>
+       <a href="#portfolio">Self Reflection</a>
+       <a href="#sampless">Samples Of My Work</a>
+    </nav>
+ 
+    <div class="follow">
+       <a href="https://www.facebook.com/anwar.abinader/" class="fab fa-facebook-f"></a>
+       <a href="www.linkedin.com/in/anwar-abi-nader-4a263223a" class="fab fa-linkedin"></a>
+       <a href="https://github.com/WEIRDHU" class="fab fa-github"></a>
+    </div>
+ 
+ </header>
+ 
+ <!-- header section ends -->
+ 
+ <!-- home section starts  -->
+ 
+ <section class="home" id="home">
+ 
+    <div class="image" data-aos="fade-right">
+       <img src="Me.jpeg" alt="">
+    </div>
+ 
+    <div class="content">
+       <h3 data-aos="fade-up">hi, i am Anwar Abi Nader</h3>
+       <span data-aos="fade-up">Computer Science Student & developer</span>
+       <p data-aos="fade-up">I'm a student at AUST achrafieh, I work as a part time job at BANK AUDI IT management.</p>
+       <a data-aos="fade-up" href="#about" class="btn">about me</a>
+    </div>
+ 
+ </section>
+ 
+ <section class="about" id="about">
+ 
+    <h1 class="heading" data-aos="fade-up"> <span>biography</span> </h1>
+ 
+    <div class="biography">
+ 
+       <p data-aos="fade-up">I have a Professional Development Plan, Till Graduating From University. Let's check out my plans! 
+        <div class="table-container">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>While At University</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Get A Gpa Of 3.8</td>
+                        <td>Make New Friends</td>
+                        <td>Find An Internship</td>
+                        <td>Gain Experience</td>
+                    </tr>
+                    <!-- More rows as needed -->
+                </tbody>
+            </table>
+        </div>
+       </p>
+ 
+       <div class="bio">
+          <h3 data-aos="zoom-in"> <span>name : </span> Anwar Abi Nader </h3>
+          <h3 data-aos="zoom-in"> <span>email : </span> anwarabinader@gmail.com </h3>
+          <h3 data-aos="zoom-in"> <span>address : </span> Lebanon, Jounieh </h3>
+          <h3 data-aos="zoom-in"> <span>phone : </span> +961-70570699 </h3>
+          <h3 data-aos="zoom-in"> <span>age : </span> 21 Years </h3>
+          <h3 data-aos="zoom-in"> <span>experience : </span> 1 Year </h3>
+          <h3 data-aos="zoom-in"> <span>LinkedIn Profile : </span> <a href="http:www.linkedin.com/in/anwar-abi-nader-4a263223a">www.linkedin.com/in/anwar-abi-nader-4a263223a </a> </h3>
+       </div>
+ 
+
+ 
+    </div>
+    
+    <div class="skills" data-aos="fade-up">
+ 
+       <h1 class="heading"> <span>skills</span> </h1>
+ 
+       <div class="progress">
+          <div class="bar" data-aos="fade-left"> <h3><span>HTML</span> <span>95%</span></h3> </div>
+          <div class="bar" data-aos="fade-right"> <h3><span>CSS</span> <span>80%</span></h3> </div>
+          <div class="bar" data-aos="fade-left"> <h3><span>JavaScript</span> <span>65%</span></h3> </div>
+          <div class="bar" data-aos="fade-right"> <h3><span>PHP</span> <span>80%</span></h3> </div>
+       </div>
+ 
+    </div>
+ 
+ </section>
+ 
+ <section class="services" id="services">
+ 
+    <h1 class="heading" data-aos="fade-up"> <span>Job Seeking Documents</span> </h1>
+ 
+    <div class="box-container">
+
+ 
+        <a href="Job Seeking Document.pdf" class="btn" data-aos="fade-up">Click Here To Check Out My Job Seeking Document.</a>
+ 
+    </div>
+ 
+ </section>
+ 
+ <!-- services section ends -->
+ 
+ <!-- portfolio section starts  -->
+
+
+ 
+
+ <section id="portfolio"></section>
+ <section class="about" id="about">
+    <h1 class="heading" data-aos="fade-up"> <span>Self-Reflection</span> </h1>
+ 
+ 
+            <div class="edu-exp">
+ 
+          
+                <div class="row">
+          
+                   <div class="box-container">
+          
+                      <h3 class="title" data-aos="fade-right">Observing Communication in the Workplace</h3>
+          
+                      <div class="box" data-aos="fade-right">
+                         <p>During my visit to Reston Hotel, I observed the communication and operations of around 15 employees in different departments. The hotel blends the IT and Hospitality industries, making it popular among celebrities and high-class individuals. They also own other properties like Portaluna and are working on a new hotel.
+
+                           In the IT department, employees need to communicate effectively to troubleshoot system issues and assist customers with connectivity problems. In the Hospitality industry, excellent communication skills are essential for handling customer inquiries.
+                           
+                           The hotel operates with three shifts to provide 24/7 services: 7 AM to 3 PM, 3 PM to 11 PM, and 11 PM to 7 AM. Managers oversee small teams, quickly addressing problems as they arise. Employees seemed happy and satisfied, enjoying their work with well-known customers and receiving high salaries and support from the owners.
+                           
+                           Tourists visiting Lebanon make up the majority of the hotel's clientele. Customer service is exceptional, with prompt responses and fast service delivery. Reston Hotel offers a positive work environment where hard work is recognized and rewarded. Working here provides valuable experience in both IT and Hospitality, beneficial for future career opportunities.</p>
+                      </div>
+          
+          
+                   </div>
+          
+                   <div class="box-container">
+          
+                      <h3 class="title" data-aos="fade-left">How A Company Hires :</h3>
+          
+                      <div class="box" data-aos="fade-left">
+                         <p>During my visit to Teleferique, I had the opportunity to speak with Toufic Abi Nader, the IT Manager, to understand their hiring process for IT assistants.
+
+                           What Teleferique Looks for in an IT Assistant
+                           
+                           When hiring an IT assistant, Teleferique seeks candidates with a solid foundation in computer science or information technology. Essential technical skills include knowledge of operating systems, networking, and troubleshooting. Moreover, they value candidates who exhibit problem-solving abilities, attention to detail, and excellent communication skills. Given the dynamic nature of IT, a willingness to learn and adapt to new technologies is also crucial.
+                           
+                           Entry-Level IT Positions at Teleferique
+                           
+                           Teleferique offers entry-level positions in IT support, system administration, and network administration. These roles are ideal for recent graduates eager to apply their technical skills in a real-world environment and gain hands-on experience in IT operations.
+                           
+                           Application Volume for IT Assistant Positions
+                           
+                           The number of applications for IT assistant positions at Teleferique varies, but on average, they receive around 30 to 50 applications per vacancy.
+                           
+                           Experience Requirements for Entry-Level IT Hires
+                           
+                           For entry-level IT hires, Teleferique does not require extensive professional experience. However, candidates should have a solid understanding of basic IT concepts and technologies, which can be acquired through coursework, internships, or personal projects.
+                           
+                           Methods for Finding New IT Employees
+                           
+                           Teleferique primarily uses online job boards such as Bayt.com and LinkedIn to advertise IT job openings. They also leverage their company website and social media platforms to reach potential candidates. Networking events, university career fairs, and employee referrals are additional effective methods for finding qualified IT talent.
+                           
+                           Sample IT Assistant Application Form
+                           
+                           Toufic Abi Nader provided a sample of their IT assistant application form, which includes sections for personal information, educational background, relevant coursework or certifications, technical skills, work experience (if any), and references. This comprehensive form ensures that all necessary information is collected to assess the suitability of candidates for the role.
+                           
+                           By following these hiring practices, Teleferique ensures they attract and select candidates who not only meet the technical requirements but also fit well with the company’s culture and values.
+                            </p>
+                      </div>
+          
+          
+                   </div>
+                   <div class="box-container">
+          
+                     <h3 class="title" data-aos="fade-right">Informational Interview Form</h3>
+         
+                     <div class="box" data-aos="fade-right">
+                        <p>During an interview with Charbel Abi Nader, IT Assistant at Gcs Computer, he shared valuable insights into his role and career path.
+
+                           Charbel's primary responsibilities at Gcs include providing technical support to team members, troubleshooting hardware and software issues, maintaining IT infrastructure, and ensuring data security. He also assists with implementing IT projects and offers training to staff on IT systems and procedures.
+                           
+                           His interest in IT began during his studies in computer science, where he developed a strong foundation in programming and systems administration. Charbel holds a Bachelor's degree in Computer Science and has obtained certifications such as CompTIA A+ and Microsoft Certified Solutions Associate (MCSA), which have enhanced his technical expertise.
+                           
+                           Charbel's journey at Gcs Computer started with an internship during his final year of university. Through dedication and hard work, he demonstrated his capabilities and was offered a full-time position as an IT Assistant upon graduation. Prior to joining Gcs, he gained valuable experience through internships and part-time roles in IT support and systems administration, applying his classroom knowledge in real-world settings.
+                           
+                           The theoretical foundation from his college studies, particularly in networking, database management, and programming, has been invaluable in his current role. One of the main challenges Charbel faced was gaining practical experience while still in college. To overcome this, he sought internships and part-time roles that allowed him to apply his knowledge practically. Additionally, staying updated with technological advancements and continuously enhancing his skills has been crucial for his career progression.
+                           
+                           When hiring, Charbel values technical proficiency, problem-solving skills, attention to detail, and a willingness to learn and adapt to new technologies. Strong communication and teamwork abilities are also essential, as IT often requires collaboration with colleagues from various departments. He believes that personal qualities such as adaptability, resilience, and a proactive attitude are key to success in the IT field. Effective IT support and solutions require quickly adapting to new technologies and problem-solving challenges while maintaining a positive and collaborative mindset.
+                           
+                           For those interested in entering the IT field, Charbel advises pursuing continuous learning and staying updated with the latest technologies and trends. Building a strong network of professional contacts and seeking mentorship opportunities are also invaluable for career advancement.
+                           </p>
+                     </div>
+         
+         
+                  </div>
+          
+                  <div class="box-container">
+          
+                     <h3 class="title" data-aos="fade-left">Job Shadowing</h3>
+         
+                     <div class="box" data-aos="fade-left">
+                        <p>During my job shadowing experience at Bank Audi's IT Department, I had the opportunity to observe the Head Office IT Manager. This role involves a variety of responsibilities, including repairing scanners, PCs, printers, and ATMs. The IT Manager emphasized the importance of teamwork and communication skills, which are essential for working effectively with colleagues.
+
+                           The IT Manager enjoys the collaborative environment at Bank Audi, where tasks are completed efficiently and harmoniously. He studied at LAU Jbeil, earning both a bachelor's degree and a master's degree in IT configuration. For those starting out in this career, he recommends studying computer science, IT, and ICT.
+                           
+                           There are significant opportunities for career advancement within the company, especially during the summer when additional staff may be needed. A typical day for the IT Manager is busy, involving checking emails to see if the company needs new orders of PCs or if any general IT support is required. The most interesting part of his job is the flexibility to leave early once all tasks are completed. However, the most challenging aspect is handling tickets related to ATMs, which often require external technical support.
+                           
+                           The IT Manager has worked at Bank Audi for over ten years, having started under the previous head office manager. He secured his current position by sending his CV to multiple companies and successfully interviewing with Bank Audi. Before joining the bank, he ran a small business as a hardware technician.
+                           
+                           Bank Audi looks for young job seekers who have basic skills and are eager to learn. Technology has significantly changed the IT field, necessitating frequent software updates and the installation of new operating systems on thin clients and PCs. The IT Manager's working hours are from 8 am to 4 pm, with some flexibility depending on the workload.
+                           
+                           For students continuing their education, internships in IT are highly recommended, and Bank Audi is open to offering these opportunities. The IT Manager encourages following up on progress, which could potentially lead to a job offer.
+                           
+                           During my visit, I observed the IT Manager's responsibilities, including downloading and installing operating systems on computers. This hands-on experience helped me better understand my career choice and confirmed my passion for fixing computers.
+                           
+                           Regarding workplace safety, employees are required to lock their computers and sign out from their profiles before leaving to protect their information. While no specific safety clothing was observed, gloves are recommended for electrical work inside computers. The dress code is generally formal, with employees wearing t-shirts and jeans.
+                           
+                           Overall, this job shadowing experience was enlightening. I learned the importance of teamwork and communication in a professional setting. It also reinforced my interest in pursuing a career in IT. I obtained contact information from Ryan Aakle and applied for an internship, which was accepted for the summer.
+                           
+                           This experience has solidified my decision to pursue a career in IT, and I am grateful for the opportunity to learn from the professionals at Bank Audi.
+                           </p>
+                     </div>
+         
+         
+                  </div>
+
+                  <div class="box-container">
+          
+                     <h3 class="title" data-aos="fade-left">Leadership in the Workplace</h3>
+         
+                     <div class="box" data-aos="fade-left">
+                        <p>On May 26, 2024, I conducted an interview with Toufic Abi Nader, the Administration Manager and Employee Manager at Teleferique Jounieh. This interview provides insights into Toufic's role and his approach to leadership.
+
+                           Toufic Abi Nader oversees the needs of employees, monitors their attendance, and ensures adherence to company rules. He became a manager after joining the company in 2007 and stepping up when the previous manager retired. His journey into management was facilitated by his experience assisting the former manager.
+                           
+                           Toufic developed his leadership skills through hands-on experience, managing a team, and addressing issues promptly. He emphasized the importance of communication in his role, noting that effective communication is essential for successful leadership. By listening to his team and considering their input, he ensures that everyone works harmoniously towards common goals.
+                           
+                           Describing his leadership style as servant leadership, Toufic prioritizes the needs of his team and focuses on serving them. When dealing with challenges, he addresses incidents directly, investigates the cause, and resolves the issue. If an employee is involved, he provides constructive feedback and guidance.
+                           
+                           To help his team improve their work quality, Toufic listens to their needs and rewards those who exceed expectations with bonuses or other perks. He believes the most important lesson he has learned as a leader is to always consider his team's needs before making decisions.
+                           
+                           Toufic's commitment to his team and his effective communication skills highlight his strengths as a leader. His willingness to support and guide his employees fosters a positive work environment at Teleferique Jounieh.
+                           </p>
+                     </div>
+         
+         
+                  </div>
+
+                </div>
+          
+             </div>
+ 
+ </section>
+ 
+ <!-- portfolio section ends -->
+ 
+ <!-- contact section starts  -->
+ 
+ <section class="about" id="about">
+   <section class="sampless" id="sampless"></section>
+ 
+    <h1 class="heading" data-aos="fade-up"> <span>Samples Of My Work</span> </h1>
+
+
+    <div class="edu-exp">
+ 
+        <h1 class="heading" data-aos="fade-up"> <span>education & experience</span> </h1>
+  
+        <div class="row">
+  
+           <div class="box-container">
+  
+              <h3 class="title" data-aos="fade-right">education</h3>
+  
+              <div class="box" data-aos="fade-right">
+                 <span>( 2020 - 2023 )</span>
+                 <h3>web developer</h3>
+                 <p>I Graduated From A Technical School In 2023 With A Final Grade Of 18.2 And I Was #2 In Lebanon In Grading With This High Grade.</p>
+              </div>
+  
+              <div class="box" data-aos="fade-right">
+                 <span>( 2023 - 2024 )</span>
+                 <h3>Computer Science</h3>
+                 <p>I'm Currently A Student At AUST Achrafieh, That's my second semester, I have a GPA of 3.6 so far.</p>
+              </div>
+  
+  
+           </div>
+  
+           <div class="box-container">
+  
+              <h3 class="title" data-aos="fade-left">experience</h3>
+  
+              <div class="box" data-aos="fade-left">
+                 <span>( 2017 - 2019 )</span>
+                 <h3>Repair Shop</h3>
+                 <p>I used to repair computes, laptops, mobile devices. I made it my own local small buisness.</p>
+              </div>
+  
+              <div class="box" data-aos="fade-left">
+                 <span>( 2023 - 2024 )</span>
+                 <h3>Software & IT Managment</h3>
+                 <p>I worked at Teleferique Jounieh, as a software and IT managment, I used to fix their computers and servers.</p>
+              </div>
+  
+           </div>
+  
+        </div>
+  
+     </div>
+  
+     <a href="Samples of my work.pdf" class="btn" data-aos="fade-up">Click Here To Check More Of Samples Of My Work.</a>
+
+    </section>
+
+    
+    <section class="contact" id="contact">
+
+    <div class="box-container">
+ 
+       <div class="box" data-aos="zoom-in">
+          <i class="fas fa-phone"></i>
+          <h3>phone</h3>
+          <p>+961-70570699</p>
+       </div>
+ 
+       <div class="box" data-aos="zoom-in">
+          <i class="fas fa-envelope"></i>
+          <h3>email</h3>
+          <p>anwarabinader@gmail.com</p>
+       </div>
+ 
+       <div class="box" data-aos="zoom-in">
+          <i class="fas fa-map-marker-alt"></i>
+          <h3>address</h3>
+          <p>Lebanon, Jounieh , Ghadir</p>
+       </div>
+ 
+    </div>
+ 
+ </section>
+ 
+ <!-- contact section ends -->
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <!-- custom js file link  -->
+
+ 
+ <!-- aos js link  -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+ 
+ <script>
+ 
+    AOS.init({
+       duration:800,
+       delay:300
+    });
+
+    let menu = document.querySelector('#menu-btn');
+let header = document.querySelector('.header');
+
+menu.onclick = () =>{
+   menu.classList.toggle('fa-times');
+   header.classList.toggle('active');
+   document.body.classList.toggle('active');
+}
+
+window.onscroll = () =>{
+   if(window.innerWidth < 991){
+      menu.classList.remove('fa-times');
+      header.classList.remove('active');
+      document.body.classList.remove('active');
+   }
+
+   document.querySelectorAll('section').forEach(sec =>{
+
+      let top = window.scrollY;
+      let offset = sec.offsetTop - 150;
+      let height = sec.offsetHeight;
+      let id = sec.getAttribute('id');
+
+      if(top >= offset && top < offset + height){
+         document.querySelectorAll('.header .navbar a').forEach(links =>{
+            links.classList.remove('active');
+            document.querySelector('.header .navbar a[href*='+ id +']').classList.add('active')
+         });
+      };
+
+   });
+
+}
+ 
+ </script>
+    
+ </body>
+ </html>
